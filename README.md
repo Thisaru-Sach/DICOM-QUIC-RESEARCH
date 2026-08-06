@@ -23,7 +23,7 @@ This project tests whether QUIC actually delivers on that, and whether adding fo
 
 Each tier gets run under the same set of simulated loss conditions and file sizes, and results get compared statistically.
 
-There's also a stretch-goal T5 (in-kernel QUIC via lxin/quic, throughput-only microbenchmark) and a planned T2b (Python userspace TCP/TLS, to fill out a 2x2 kernel/userspace × TCP/QUIC comparison) — not core to the main results but useful for context.
+There's also a stretch-goal T5 (in-kernel QUIC via lxin/quic, throughput-only microbenchmark) and a planned T2b (Python userspace TCP/TLS, to fill out a 2x2 kernel/userspace × TCP/QUIC comparison) - not core to the main results but useful for context.
 
 ## Setup
 
@@ -42,7 +42,7 @@ receiver/     receiving-side implementation, synced over from the receiver VM
 proxy/        MASQUE proxy
 scripts/      run scripts per tier (run_t1.sh ... run_t4.sh), loss injection, run_all.sh
 logs/         run logs (gitignored, not tracked)
-data/         DICOM test files, all sizes (gitignored — too large for git)
+data/         DICOM test files, all sizes (gitignored - too large for git)
 results/      CSV output from test runs (gitignored)
 certs/        TLS certs/keys (gitignored, never commit these)
 ```
@@ -82,11 +82,11 @@ Analysis done in R (4.6.0): ART-ANOVA for the main effects, Cliff's delta for ef
 
 ## Known issues / things fixed along the way
 
-- aioquic stalls past ~1GB transfers — fixed with per-chunk `transmit()` calls and yielding via `asyncio.sleep(0)`.
+- aioquic stalls past ~1GB transfers - fixed with per-chunk `transmit()` calls and yielding via `asyncio.sleep(0)`.
 - aioquic's `ACK_FRAME_CAPACITY` is hardcoded too low for sustained high-throughput transfer — patched to 1024.
-- RS encoding was blocking the event loop — moved to `run_in_executor`.
-- Default idle timeout was closing connections mid-transfer under loss — raised to 300s.
-- At zero loss, aioquic is consistently slower than kernel TCP/TLS. This isn't a bug, it's expected — pure Python/userspace vs kernel-optimized TCP. Matches what Kosek et al. (2023) found too.
+- RS encoding was blocking the event loop - moved to `run_in_executor`.
+- Default idle timeout was closing connections mid-transfer under loss - raised to 300s.
+- At zero loss, aioquic is consistently slower than kernel TCP/TLS. This isn't a bug, it's expected - pure Python/userspace vs kernel-optimized TCP. Matches what Kosek et al. (2023) found too.
 
 ## Status
 
@@ -94,7 +94,7 @@ All four tiers implemented and validated (integrity checks + logging working end
 
 ## Author
 
-Thisaru Sachintha (A.S.T.S. Seemon, AS2022366)
+Thisaru Sachintha (A.S.T.S. Seemon)
 
 # from sender VM
 rsync -avz --progress \
