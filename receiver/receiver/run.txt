@@ -1,0 +1,14 @@
+python receiver/tcp_receiver.py \
+    --cert certs/receiver.crt \
+    --key  certs/receiver.key \
+    --ca   certs/ca.crt \
+    --out-dir data/scratch/ \
+    --csv results/raw/tcp_results.csv
+
+    python receiver/quic_receiver.py \
+    --cert certs/receiver.crt \
+    --key  certs/receiver.key \
+    --ca   certs/ca.crt \
+    --out-dir data/scratch/ \
+    --csv results/raw/quic_results.csv \
+    --log-dir logs
