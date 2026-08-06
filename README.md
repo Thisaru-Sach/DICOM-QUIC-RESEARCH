@@ -8,7 +8,7 @@ B.Sc. (Special) Computer Science, University of Sri Jayewardenepura. Supervised 
 
 ## What this is about
 
-Hospitals move large DICOM files (CT/MRI scans) over networks that aren't always reliable — packet loss, jitter, correlated bursts of drops. TCP handles this okay but not great, especially over lossy links where a single dropped segment stalls the whole connection (head-of-line blocking). QUIC is supposed to fix some of that since it's built on UDP and doesn't have the same blocking behavior.
+Hospitals move large DICOM files (CT/MRI scans) over networks that aren't always reliable - packet loss, jitter, correlated bursts of drops. TCP handles this okay but not great, especially over lossy links where a single dropped segment stalls the whole connection (head-of-line blocking). QUIC is supposed to fix some of that since it's built on UDP and doesn't have the same blocking behavior.
 
 This project tests whether QUIC actually delivers on that, and whether adding forward error correction (Reed-Solomon) on top makes it meaningfully more resilient, using DICOM transfer as the real-world workload.
 
@@ -16,7 +16,7 @@ This project tests whether QUIC actually delivers on that, and whether adding fo
 
 | Tier | What it is |
 |------|-----------|
-| T1 | Plain TCP/TLS — baseline |
+| T1 | Plain TCP/TLS - baseline |
 | T2 | QUIC via aioquic |
 | T3 | QUIC + MASQUE (proxied) |
 | T4 | QUIC + MASQUE + Reed-Solomon RS(6,4) erasure coding |
@@ -29,8 +29,8 @@ There's also a stretch-goal T5 (in-kernel QUIC via lxin/quic, throughput-only mi
 
 Two VMs (Linux Mint, VirtualBox), same network:
 
-- **Sender** — `10.10.0.11`
-- **Receiver** — `10.10.0.12`
+- **Sender**   - `10.10.0.11`
+- **Receiver** - `10.10.0.12`
 
 Sender initiates transfers, receiver logs and verifies. Network degradation (loss, correlated bursts) is injected on the sender side via `tc`/`netem`.
 
@@ -51,7 +51,7 @@ certs/        TLS certs/keys (gitignored, never commit these)
 
 ## Syncing sender/receiver code
 
-The receiver VM doesn't have its own git setup — the sender VM is the single place commits happen. Receiver-side code gets pulled over with rsync before each commit:
+The receiver VM doesn't have its own git setup - the sender VM is the single place commits happen. Receiver-side code gets pulled over with rsync before each commit:
 
 ```bash
 bash scripts/sync_receiver.sh
@@ -83,7 +83,7 @@ Analysis done in R (4.6.0): ART-ANOVA for the main effects, Cliff's delta for ef
 ## Known issues / things fixed along the way
 
 - aioquic stalls past ~1GB transfers - fixed with per-chunk `transmit()` calls and yielding via `asyncio.sleep(0)`.
-- aioquic's `ACK_FRAME_CAPACITY` is hardcoded too low for sustained high-throughput transfer — patched to 1024.
+- aioquic's `ACK_FRAME_CAPACITY` is hardcoded too low for sustained high-throughput transfer - patched to 1024.
 - RS encoding was blocking the event loop - moved to `run_in_executor`.
 - Default idle timeout was closing connections mid-transfer under loss - raised to 300s.
 - At zero loss, aioquic is consistently slower than kernel TCP/TLS. This isn't a bug, it's expected - pure Python/userspace vs kernel-optimized TCP. Matches what Kosek et al. (2023) found too.
