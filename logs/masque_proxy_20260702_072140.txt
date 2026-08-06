@@ -1,0 +1,14 @@
+2026-07-02 07:21:40 [LOG] Writing to logs/masque_proxy_20260702_072140.txt
+2026-07-02 07:21:40 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-07-02 07:21:40 [PROXY] Outer target    → 10.10.0.12:4433
+2026-07-02 07:21:40 [PROXY] ALPN            → dicom-quic
+2026-07-02 07:21:40 [PROXY] Ctrl+C to stop
+2026-07-02 07:21:55 [INNER←] inner_stream  39,212B
+2026-07-02 07:21:55 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-02 07:21:55 [PROXY] Outer tunnel established
+2026-07-02 07:21:55 [OUTER→] forwarded 39,212B to receiver
+2026-07-02 07:22:25 [PROXY] Timeout waiting for receiver response
+2026-07-02 07:22:55 [INNER←] inner_stream  118B
+2026-07-02 07:22:55 [OUTER→] forwarded 118B to receiver
+2026-07-02 07:23:25 [PROXY] Timeout waiting for receiver response
+2026-07-02 07:26:14 [PROXY] Stopped.

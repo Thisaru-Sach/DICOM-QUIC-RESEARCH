@@ -1,0 +1,77 @@
+2026-07-14 08:46:52 [LOG] Writing to logs/masque_proxy_20260714_084652.txt
+2026-07-14 08:46:53 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-07-14 08:46:53 [PROXY] Outer target    → 10.10.0.12:4433
+2026-07-14 08:46:53 [PROXY] ALPN            → dicom-quic
+2026-07-14 08:46:53 [PROXY] Ctrl+C to stop
+2026-07-14 08:46:55 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-14 08:46:55 [PROXY] Outer tunnel established
+2026-07-14 08:46:55 [OUTER→] stream=0  116B  end=False
+2026-07-14 08:46:58 [INNER←] stream=4  13108847B  (frag stream)
+2026-07-14 08:46:58 [OUTER→] stream=4  13108847B  end=True
+2026-07-14 08:46:58 [INNER←] stream=24  13108847B  (frag stream)
+2026-07-14 08:46:58 [OUTER→] stream=24  13108847B  end=True
+2026-07-14 08:46:58 [INNER←] stream=8  13108847B  (frag stream)
+2026-07-14 08:46:58 [OUTER→] stream=8  13108847B  end=True
+2026-07-14 08:46:58 [INNER←] stream=20  13108847B  (frag stream)
+2026-07-14 08:46:58 [OUTER→] stream=20  13108847B  end=True
+2026-07-14 08:46:58 [INNER←] stream=16  13108847B  (frag stream)
+2026-07-14 08:46:58 [OUTER→] stream=16  13108847B  end=True
+2026-07-14 08:46:58 [INNER←] stream=12  13108847B  (frag stream)
+2026-07-14 08:46:58 [OUTER→] stream=12  13108847B  end=True
+2026-07-14 08:47:04 [OUTER←] stream=0  1B  (from receiver)
+2026-07-14 08:47:04 [INNER→] stream=0  1B  (ACK to sender)
+2026-07-14 08:47:05 [INNER] Sender disconnected — 
+2026-07-14 08:47:08 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-14 08:47:08 [PROXY] Outer tunnel established
+2026-07-14 08:47:08 [OUTER→] stream=0  116B  end=False
+2026-07-14 08:47:11 [INNER←] stream=4  13108847B  (frag stream)
+2026-07-14 08:47:11 [OUTER→] stream=4  13108847B  end=True
+2026-07-14 08:47:11 [INNER←] stream=12  13108847B  (frag stream)
+2026-07-14 08:47:11 [OUTER→] stream=12  13108847B  end=True
+2026-07-14 08:47:11 [INNER←] stream=24  13108847B  (frag stream)
+2026-07-14 08:47:11 [OUTER→] stream=24  13108847B  end=True
+2026-07-14 08:47:11 [INNER←] stream=8  13108847B  (frag stream)
+2026-07-14 08:47:11 [OUTER→] stream=8  13108847B  end=True
+2026-07-14 08:47:11 [INNER←] stream=20  13108847B  (frag stream)
+2026-07-14 08:47:11 [OUTER→] stream=20  13108847B  end=True
+2026-07-14 08:47:11 [INNER←] stream=16  13108847B  (frag stream)
+2026-07-14 08:47:11 [OUTER→] stream=16  13108847B  end=True
+2026-07-14 08:47:17 [OUTER←] stream=0  1B  (from receiver)
+2026-07-14 08:47:17 [INNER→] stream=0  1B  (ACK to sender)
+2026-07-14 08:47:18 [INNER] Sender disconnected — 
+2026-07-14 08:47:29 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-14 08:47:30 [PROXY] Outer tunnel established
+2026-07-14 08:47:30 [OUTER→] stream=0  117B  end=False
+2026-07-14 08:47:51 [INNER←] stream=4  78639987B  (frag stream)
+2026-07-14 08:47:51 [OUTER→] stream=4  78639987B  end=True
+2026-07-14 08:47:51 [INNER←] stream=12  78639987B  (frag stream)
+2026-07-14 08:47:51 [OUTER→] stream=12  78639987B  end=True
+2026-07-14 08:47:51 [INNER←] stream=16  78639987B  (frag stream)
+2026-07-14 08:47:51 [OUTER→] stream=16  78639987B  end=True
+2026-07-14 08:47:51 [INNER←] stream=24  78639987B  (frag stream)
+2026-07-14 08:47:51 [OUTER→] stream=24  78639987B  end=True
+2026-07-14 08:47:51 [INNER←] stream=8  78639987B  (frag stream)
+2026-07-14 08:47:51 [OUTER→] stream=8  78639987B  end=True
+2026-07-14 08:47:51 [INNER←] stream=20  78639987B  (frag stream)
+2026-07-14 08:47:51 [OUTER→] stream=20  78639987B  end=True
+2026-07-14 08:48:04 [OUTER] Disconnected — Idle timeout
+2026-07-14 08:48:17 [OUTER] Disconnected — Idle timeout
+2026-07-14 08:48:37 [OUTER←] stream=0  1B  (from receiver)
+2026-07-14 08:48:37 [INNER→] stream=0  1B  (ACK to sender)
+2026-07-14 08:48:42 [INNER] Sender disconnected — 
+2026-07-14 08:48:46 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-14 08:48:46 [PROXY] Outer tunnel established
+2026-07-14 08:48:46 [OUTER→] stream=0  117B  end=False
+2026-07-14 08:49:07 [INNER←] stream=4  78639987B  (frag stream)
+2026-07-14 08:49:07 [OUTER→] stream=4  78639987B  end=True
+2026-07-14 08:49:07 [INNER←] stream=16  78639987B  (frag stream)
+2026-07-14 08:49:07 [OUTER→] stream=16  78639987B  end=True
+2026-07-14 08:49:07 [INNER←] stream=20  78639987B  (frag stream)
+2026-07-14 08:49:07 [OUTER→] stream=20  78639987B  end=True
+2026-07-14 08:49:07 [INNER←] stream=12  78639987B  (frag stream)
+2026-07-14 08:49:07 [OUTER→] stream=12  78639987B  end=True
+2026-07-14 08:49:07 [INNER←] stream=24  78639987B  (frag stream)
+2026-07-14 08:49:07 [OUTER→] stream=24  78639987B  end=True
+2026-07-14 08:49:07 [INNER←] stream=8  78639987B  (frag stream)
+2026-07-14 08:49:07 [OUTER→] stream=8  78639987B  end=True
+2026-07-14 08:49:48 [INNER] Sender disconnected — 

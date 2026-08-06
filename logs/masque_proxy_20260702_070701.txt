@@ -1,0 +1,5 @@
+2026-07-02 07:07:01 [LOG] Writing to logs/masque_proxy_20260702_070701.txt
+2026-07-02 07:07:01 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-07-02 07:07:01 [PROXY] Outer target    → 10.10.0.12:4433
+2026-07-02 07:07:01 [PROXY] ALPN            → dicom-quic
+2026-07-02 07:07:01 [PROXY] Ctrl+C to stop

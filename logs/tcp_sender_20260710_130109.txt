@@ -1,0 +1,5 @@
+2026-07-10 13:01:09 [LOG] Writing to logs/tcp_sender_20260710_130109.txt
+2026-07-10 13:01:09 [CONFIG] host=10.10.0.12:9000  file=data/dicom/large/ct_large.dcm
+2026-07-10 13:01:09 [CONFIG] trials=1  loss=0%  size=large
+2026-07-10 13:01:10 [TRIAL 001] ERROR — [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1000)
+2026-07-10 13:01:10 [DONE] 0/1 succeeded

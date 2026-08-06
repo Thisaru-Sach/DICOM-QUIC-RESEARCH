@@ -1,0 +1,5 @@
+2026-07-10 13:08:22 [LOG] Writing to logs/tcp_sender_20260710_130822.txt
+2026-07-10 13:08:22 [CONFIG] host=10.10.0.12:9000  file=data/dicom/large/ct_large.dcm
+2026-07-10 13:08:22 [CONFIG] trials=1  loss=0%  size=large
+2026-07-10 13:08:53 [TRIAL 001] OK             | e2e= 30493.3ms  handshake=  14.8ms  transfer= 11556.9ms  | 1,073,704,270 B  sha256=1afb979455d1ae65…
+2026-07-10 13:08:53 [DONE] 1/1 succeeded

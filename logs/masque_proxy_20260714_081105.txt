@@ -1,0 +1,12 @@
+2026-07-14 08:11:05 [LOG] Writing to logs/masque_proxy_20260714_081105.txt
+2026-07-14 08:11:05 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-07-14 08:11:05 [PROXY] Outer target    → 10.10.0.12:4433
+2026-07-14 08:11:05 [PROXY] ALPN            → dicom-quic
+2026-07-14 08:11:05 [PROXY] Ctrl+C to stop
+2026-07-14 08:11:07 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-14 08:11:08 [OUTER] Disconnected — unable to get local issuer certificate
+2026-07-14 08:11:08 [PROXY] Outer tunnel failed: 
+2026-07-14 08:11:10 [INNER←] stream=4  52435276B  (frag stream)
+2026-07-14 08:11:10 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-07-14 08:11:10 [OUTER] Disconnected — unable to get local issuer certificate
+2026-07-14 08:11:10 [PROXY] Outer tunnel failed: 

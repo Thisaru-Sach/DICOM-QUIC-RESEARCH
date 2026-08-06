@@ -1,0 +1,16 @@
+python sender/tcp_sender.py \
+    --cert certs/sender.crt \
+    --key  certs/sender.key \
+    --ca   certs/ca.crt \
+    --file data/dicom/small/test.dcm \
+    --size-class small \
+    --trial 1 --trials 3 --loss-level 0
+
+    python sender/quic_sender.py \
+    --file data/dicom/small/test.dcm \
+    --size-class small \
+    --tier 2 \
+    --trial 1 \
+    --trials 3 \
+    --loss-level 0 \
+    --log-dir logs

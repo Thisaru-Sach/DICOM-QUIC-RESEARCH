@@ -1,0 +1,6 @@
+2026-07-02 06:49:07 [LOG] Writing to logs/masque_proxy_20260702_064907.txt
+2026-07-02 06:49:07 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-07-02 06:49:07 [PROXY] Outer target    → 10.10.0.12:4433
+2026-07-02 06:49:07 [PROXY] ALPN            → dicom-quic
+2026-07-02 06:49:07 [PROXY] Ctrl+C to stop
+2026-07-02 06:49:16 [INNER] Sender disconnected — 

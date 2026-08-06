@@ -1,0 +1,5 @@
+2026-07-14 08:10:03 [LOG] Writing to logs/tcp_sender_20260714_081003.txt
+2026-07-14 08:10:03 [CONFIG] host=10.10.0.12:9000  file=data/dicom/small/ct_small.dcm
+2026-07-14 08:10:03 [CONFIG] trials=1  loss=10%  size=small
+2026-07-14 08:11:04 [TRIAL 002] TIMEOUT
+2026-07-14 08:11:04 [DONE] 0/1 succeeded

@@ -1,0 +1,66 @@
+# ==========================================
+# Security & Credentials (TLS / SSL Keys)
+# NEVER commit private keys or certificates!
+# ==========================================
+*.key
+*.pem
+*.crt
+*.cer
+*.csr
+*.pfx
+*.p12
+
+# Explicit key directories (if you store them in dedicated folders)
+certs/
+keys/
+ssl/
+tls/
+
+# ==========================================
+# Python Runtime & Bytecode
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+.venv/
+venv/
+ENV/
+env/
+
+# ==========================================
+# Environment Variables & Local Configs
+# ==========================================
+.env
+.env.local
+config.local.json
+
+# ==========================================
+# Temporary Transferred Files & Logs
+# ==========================================
+# Ignore log files generated during testing
+*.log
+
+# Optional: Ignore temporary files received during testing
+downloads/
+received_files/
+tmp/
+
+# ==========================================
+# OS & IDE Specific Files
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ==========================================
+# DICOM & Medical Imaging Data
+# ==========================================
+*.dcm
+*.dicom
+*.DCM
+*.DICOM

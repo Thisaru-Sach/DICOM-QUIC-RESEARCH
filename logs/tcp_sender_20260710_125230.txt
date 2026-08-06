@@ -1,0 +1,3 @@
+2026-07-10 12:52:30 [LOG] Writing to logs/tcp_sender_20260710_125230.txt
+2026-07-10 12:52:30 [CONFIG] host=10.10.0.12:9000  file=data/dicom/large/ct_large.dcm
+2026-07-10 12:52:30 [CONFIG] trials=1  loss=0%  size=large
