@@ -151,17 +151,19 @@ class DicomSenderProtocol(QuicConnectionProtocol):
         if tier == 4 and rs_n > 0 and rs_k > 0:
             frag_dir   = scratch_dir / f"trial{trial_number:03d}_frags"
             # Run CPU-bound RS encoding in a thread so the event loop keeps
-            # servicing the QUIC connection (keepalives/timers) during
-            # long encodes on large files — otherwise the connection
-            # idle-times-out mid-encode before any data is sent.
+            # servicing the QUIC connection during long encodes.
             loop = asyncio.get_running_loop()
             frag_paths = await loop.run_in_executor(
                 None, rs_encode, str(file_path), rs_n, rs_k, str(frag_dir)
             )
-            fragments  = [Path(p).read_bytes() for p in sorted(frag_paths)]
+            # Free the original file bytes now — no longer needed, and
+            # holding it plus all fragments simultaneously risks OOM on
+            # large files (e.g. 1GB file + 6x268MB fragments ~= 2.6GB).
+            del data
+            fragment_paths = sorted(frag_paths)
             n_streams  = rs_n
-            shutil.rmtree(frag_dir, ignore_errors=True)  # free disk immediately
         else:
+            fragment_paths = None
             fragments = [data]
             n_streams = 1
             rs_n = rs_k = 0
@@ -179,10 +181,22 @@ class DicomSenderProtocol(QuicConnectionProtocol):
         self.transmit()
 
         t_data_start = time.time()
-        await asyncio.gather(*[
-            self._send_fragment((idx + 1) * 4, idx, frag)
-            for idx, frag in enumerate(fragments)
-        ])
+        if fragment_paths is not None:
+            # T4: stream each fragment from disk in chunks — never hold
+            # all fragments in memory simultaneously (avoids OOM on
+            # large files, e.g. 1GB file -> 6x268MB RS fragments).
+            import os as _os
+            await asyncio.gather(*[
+                self._send_fragment_from_file(
+                    (idx + 1) * 4, idx, Path(p), _os.path.getsize(p)
+                )
+                for idx, p in enumerate(fragment_paths)
+            ])
+        else:
+            await asyncio.gather(*[
+                self._send_fragment((idx + 1) * 4, idx, frag)
+                for idx, frag in enumerate(fragments)
+            ])
         t_data_end = time.time()
 
         try:
@@ -214,6 +228,37 @@ class DicomSenderProtocol(QuicConnectionProtocol):
             "transfer_ms":     (t_data_end   - t_data_start) * 1000,
             "e2e_ms":          (t_ack        - t_send_start) * 1000,
         }
+
+    async def _send_fragment_from_file(
+        self, stream_id: int, idx: int, path: Path, frag_size: int
+    ) -> None:
+        """Stream a fragment file to a QUIC stream in chunks, never
+        holding the full fragment in memory. Deletes the file once sent
+        to free disk immediately (RS fragments are scratch data)."""
+        header = struct.pack(">IH", frag_size, idx)
+        self._quic.send_stream_data(stream_id, header, end_stream=False)
+        self.transmit()
+
+        chunks_since_yield = 0
+        sent = 0
+        with open(path, "rb") as f:
+            while sent < frag_size:
+                chunk = f.read(SEND_BUF)
+                if not chunk:
+                    break
+                sent += len(chunk)
+                is_last = sent >= frag_size
+                self._quic.send_stream_data(stream_id, chunk, end_stream=is_last)
+                self.transmit()
+                chunks_since_yield += 1
+                if chunks_since_yield >= 4:
+                    await asyncio.sleep(0)
+                    chunks_since_yield = 0
+
+        try:
+            path.unlink()
+        except Exception:
+            pass
 
     async def _send_fragment(self, stream_id: int, idx: int, data: bytes) -> None:
         payload = struct.pack(">IH", len(data), idx) + data

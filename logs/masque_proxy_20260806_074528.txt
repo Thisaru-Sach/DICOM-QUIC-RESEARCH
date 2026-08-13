@@ -1,0 +1,11 @@
+2026-08-06 07:45:28 [LOG] Writing to logs/masque_proxy_20260806_074528.txt
+2026-08-06 07:45:28 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-08-06 07:45:28 [PROXY] Outer target    → 10.10.0.12:4433
+2026-08-06 07:45:28 [PROXY] ALPN            → dicom-quic
+2026-08-06 07:45:28 [PROXY] Ctrl+C to stop
+2026-08-06 07:47:51 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-08-06 07:47:52 [PROXY] Outer tunnel established
+2026-08-06 07:47:52 [OUTER→] stream=0  116B  end=False
+2026-08-06 07:52:52 [OUTER] Disconnected — 
+2026-08-06 07:53:34 [INNER] Sender disconnected — Idle timeout
+2026-08-06 08:06:38 [PROXY] Stopped.
