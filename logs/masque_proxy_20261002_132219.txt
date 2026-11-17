@@ -1,0 +1,23 @@
+2026-10-02 13:22:19 [LOG] Writing to logs/masque_proxy_20261002_132219.txt
+2026-10-02 13:22:19 [PROXY] Inner listener  → 0.0.0.0:4435
+2026-10-02 13:22:19 [PROXY] Outer target    → 10.10.0.12:4433
+2026-10-02 13:22:19 [PROXY] ALPN            → dicom-quic
+2026-10-02 13:22:19 [PROXY] Ctrl+C to stop
+2026-10-02 13:25:31 [PROXY] Opening outer tunnel → 10.10.0.12:4433
+2026-10-02 13:25:32 [PROXY] Outer tunnel established
+2026-10-02 13:25:32 [OUTER→] stream=0  116B  end=False
+2026-10-02 13:26:58 [INNER←] stream=4  268426097B  (frag stream)
+2026-10-02 13:26:58 [OUTER→] stream=4  268426097B  end=True
+2026-10-02 13:26:59 [INNER←] stream=24  268426097B  (frag stream)
+2026-10-02 13:26:59 [OUTER→] stream=24  268426097B  end=True
+2026-10-02 13:26:59 [INNER←] stream=8  268426097B  (frag stream)
+2026-10-02 13:26:59 [OUTER→] stream=8  268426097B  end=True
+2026-10-02 13:26:59 [INNER←] stream=12  268426097B  (frag stream)
+2026-10-02 13:26:59 [OUTER→] stream=12  268426097B  end=True
+2026-10-02 13:27:00 [INNER←] stream=20  268426097B  (frag stream)
+2026-10-02 13:27:00 [OUTER→] stream=20  268426097B  end=True
+2026-10-02 13:27:00 [INNER←] stream=16  268426097B  (frag stream)
+2026-10-02 13:27:00 [OUTER→] stream=16  268426097B  end=True
+2026-10-02 13:30:43 [OUTER] Disconnected — 
+2026-10-02 13:30:46 [INNER] Sender disconnected — 
+2026-10-02 13:31:26 [PROXY] Stopped.
