@@ -1,0 +1,43 @@
+diff -ruN -x __pycache__ -x '*.pyc' -x '*.so' orig/aioquic/quic/connection.py new/aioquic/quic/connection.py
+--- orig/aioquic/quic/connection.py	2025-10-11 08:52:02.000000000 +0530
++++ new/aioquic/quic/connection.py	2026-11-17 15:39:28.941776844 +0530
+@@ -90,7 +90,7 @@
+ NetworkAddress = Any
+ 
+ # frame sizes
+-ACK_FRAME_CAPACITY = 64  # FIXME: this is arbitrary!
++ACK_FRAME_CAPACITY = 1024  # FIXME: this is arbitrary!
+ APPLICATION_CLOSE_FRAME_CAPACITY = 1 + 2 * UINT_VAR_MAX_SIZE  # + reason length
+ CONNECTION_LIMIT_FRAME_CAPACITY = 1 + UINT_VAR_MAX_SIZE
+ HANDSHAKE_DONE_FRAME_CAPACITY = 1
+diff -ruN -x __pycache__ -x '*.pyc' -x '*.so' orig/aioquic/quic/packet.py new/aioquic/quic/packet.py
+--- orig/aioquic/quic/packet.py	2025-10-11 08:52:02.000000000 +0530
++++ new/aioquic/quic/packet.py	2026-11-17 15:39:28.924028724 +0530
+@@ -622,16 +622,22 @@
+     return rangeset, delay
+ 
+ 
+-def push_ack_frame(buf: Buffer, rangeset: RangeSet, delay: int) -> int:
+-    ranges = len(rangeset)
+-    index = ranges - 1
++def push_ack_frame(buf: Buffer, rangeset: RangeSet, delay: int, max_ranges: int = 32) -> int:
++    # Bound the number of ranges encoded to keep the frame size predictable
++    # under heavy/bursty loss (many disjoint ranges). RFC 9000 permits
++    # omitting older ranges — receivers primarily need recent loss info;
++    # older gaps are handled by retransmission timers regardless.
++    total   = len(rangeset)
++    ranges  = min(total, max_ranges)
++    start_index = total - ranges
++    index = total - 1
+     r = rangeset[index]
+     buf.push_uint_var(r.stop - 1)
+     buf.push_uint_var(delay)
+-    buf.push_uint_var(index)
++    buf.push_uint_var(ranges - 1)
+     buf.push_uint_var(r.stop - 1 - r.start)
+     start = r.start
+-    while index > 0:
++    while index > start_index:
+         index -= 1
+         r = rangeset[index]
+         buf.push_uint_var(start - r.stop - 1)
